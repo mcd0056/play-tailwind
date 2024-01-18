@@ -1,0 +1,178 @@
+.assistants-container {
+    display: flex; /* Changed to flex to manage child width distribution */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.assistants-heading {
+    width: 100%; /* Full width to ensure it does not interfere with flex items */
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.assistants-grid {
+    display: flex; /* Use flex display for direct children */
+    flex-wrap: wrap; /* Wrap items to next line if no space */
+    justify-content: flex-start; /* Align items to the start */
+    gap: 20px; /* Space between items */
+    width: 100%; /* Full width */
+    padding: 0;
+}
+
+.assistant-item {
+    flex: 1; /* Flex grow to available space */
+    min-width: 250px; /* Minimum width for each item */
+    max-width: 250px;
+    max-height: 250px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.assistant-info {
+    margin-bottom: 10px; /* Space above the button */
+}
+
+.assistant-name {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.assistant-description, .assistant-created-at {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 5px; /* Ensures consistent spacing */
+}
+
+.use-assistant-btn {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: start;
+    margin-top: auto; /* Aligns button to the start of the flex container */
+}
+
+.use-assistant-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Assistant Chat Container Styles */
+.assistant-chat-container {
+    background-color: #fff; /* Consistent with main app */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.assistant-chat-container .heading-center {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.assistant-chat-container .chat-interface {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.assistant-chat-container .chat-screen {
+    overflow-y: auto;
+    height: 400px;
+    margin-bottom: 10px;
+}
+
+.assistant-chat-container .chat-input-and-upload {
+    display: flex;
+    align-items: center;
+}
+
+.assistant-chat-container .chat-input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    margin-right: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.assistant-chat-container .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.assistant-chat-container .send-button {
+    background-color: #007bff; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+.assistant-chat-container .spinner img {
+    width: 20px;
+    height: 20px;
+}
+
+.assistant-details {
+    text-align: center;
+    padding: 20px;
+    background-color: #f3f4f6; /* light grey background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .assistant-details img.assistant-image {
+    width: 100px; /* or any size you prefer */
+    height: auto;
+    border-radius: 50%; /* circular image */
+    margin-bottom: 10px;
+  }
+  
+  .assistant-details h2 {
+    font-size: 1.5em;
+    color: #333; /* dark grey color for text */
+    margin-bottom: 5px;
+  }
+  
+  .assistant-details p {
+    font-size: 1em;
+    color: #666; /* lighter text color */
+    margin-bottom: 10px;
+  }
+  
+  .welcome-message {
+    font-size: 1.2em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }

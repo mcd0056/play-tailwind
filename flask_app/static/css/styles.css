@@ -1,0 +1,468 @@
+/* For WebKit browsers like Chrome, Safari */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.sidebar {
+    flex: 0 0 250px;
+    background-color: #e6e6e6; /* Slightly different background */
+    padding: 20px;
+    overflow-y: auto; /* Allow scrolling for long lists */
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    transition: flex-basis 0.5s; /* Add shadow for depth */
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+/* CSS for the sidebar when it is collapsed */
+.sidebar.collapsed {
+    flex: 0 0 0px; /* Collapse the sidebar */
+    padding: 20px 0px;
+}
+
+
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fff; /* Main area background */
+}
+
+.chat-screen {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+
+.dropdown {
+    display: flex;
+    justify-content: space-between; /* Spreads the select and icon apart */
+    align-items: center; /* Vertically center contents */
+    width: 100%;
+}
+
+.conversation-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items horizontally */
+    max-height: 150px; /* Fixed maximum height for conversation item */
+}
+
+.conversation-item:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+}
+
+.conversation-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.conversation-snippet {
+    color: #666;
+    font-size: 0.9em;
+    flex-grow: 1;
+    max-height: 150px; /* Matching maximum height for conversation text */
+    overflow: hidden; /* Hide overflow content */
+}
+/* Profile section in the sidebar */
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc; /* Placeholder color */
+    margin-right: 10px;
+}
+
+.profile-name {
+    font-weight: bold;
+}
+
+/* Enhancing the 'New Chat' button */
+#new-chat {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    width: 100%; /* Full width */
+}
+
+/* Delete conversation icon button */
+.delete-conversation {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    display: inline;
+    margin-left: 10px;
+}
+
+
+/* Multiline chat input */
+.chat-input {
+    flex-grow: 1;
+    min-height: 20px; /* Adjust as needed for a taller input */
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    
+}
+
+/* Icon buttons */
+.icon-button {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 20%;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/* Adjusting icon size within icon buttons */
+.icon-button img {
+    width: 20px; /* Set a fixed width for icons */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.file-upload-button {
+    order: -1; /* Moves the upload button to the left */
+    margin-right: auto; /* Pushes everything else to the right */
+}
+
+.chatbot-selection-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff; /* Adjust as needed */
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-label {
+    text-align: right;
+}
+
+.chatbot-dropdown {
+    flex-grow: 1;
+}
+
+
+.chatbot-persona {
+    margin-left: 10px;
+    display: flex;
+    gap: 10px; 
+}
+
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for image preview container */
+#image-preview-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Style for the image frame */
+.image-frame {
+    border: 2px solid #007bff; /* Blue border for modern look */
+    display: inline-block; /* Aligns the frame to center */
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners for the frame */
+    position: relative;
+    background-color: #f8f9fa; /* Light background for the frame */
+}
+
+/* Style for the uploaded image within the frame */
+.image-frame img {
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    object-fit: cover; /* Ensures the image covers the area nicely */
+    border-radius: 8px; /* Rounded corners for the image */
+}
+
+/* Style for the label below the image */
+.image-label {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #007bff; /* Blue text color */
+}
+
+/* Style for the uploaded image */
+#image-preview-container img {
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    object-fit: cover; /* Ensures the image covers the area nicely */
+    border-radius: 8px; /* Optional: Adds rounded corners to the image */
+    margin: auto; /* Centers the image */
+    display: block; /* Makes sure the image is a block element for centering */
+}
+
+/* Style for the page heading */
+.heading-center {
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333; /* A neutral, modern color */
+    font-size: 1.5rem; /* Adjust size as needed */
+    text-transform: uppercase; /* Stylistic choice for headers */
+    letter-spacing: 1.5px; /* Increase letter spacing for a modern look */
+    word-spacing: 2px; /* Adjust spacing between words */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* Subtle text shadow for depth */
+}
+
+
+/* Container for dropdowns */
+.dropdown-container {
+    display: flex;
+    justify-content: space-around; /* Evenly space out the dropdowns */
+    align-items: center;
+    width: 100%; /* Make sure it uses full width of the parent */
+}
+
+
+/* Styling for the dropdown */
+.system-prompt-selection select {
+    width: 100%; /* Ensure it takes up available space in its container */
+    max-width: 100%; /* Prevent it from stretching beyond the parent container */
+    overflow: hidden; /* Prevent text from overflowing */
+    text-overflow: ellipsis; /* Add ellipsis to text that can't fit in the dropdown */
+    white-space: nowrap; /* Keep the dropdown text on one line */
+}
+
+.system-prompt-selection select:focus {
+    border-color: #007bff;
+}
+
+.system-prompt-selection label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Align items to the right for system-prompt and to the left for persona */
+.system-prompt-selection {
+    justify-content: flex-end;
+}
+
+
+/* Updated container style for modern look and alignment */
+.prompt-and-persona-container {
+    display: flex;
+    justify-content: center; /* Center align the container */
+    padding: 15px;
+    border: 1px solid #ddd; /* Use a softer border color */
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+}
+
+button:hover {
+    background-color: #007bff;
+}
+
+.send-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.send-button {
+    padding: 10px 20px; 
+    border-radius: 10%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+}
+
+
+
+
+
+/* Adjusting icon size within icon buttons */
+.icon-button img {
+    width: 20px; /* Set a fixed width for icons */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-flex;
+}
+
+/* Adjust the last icon-button to not have a margin on the right */
+.icon-button:last-child {
+    margin-right: 0;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax values as needed */
+    gap: 10px; /* Spacing between images */
+    padding: 10px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 150px; /* Adjust height as needed */
+    object-fit: cover; /* This will ensure images cover the area without distortion */
+}
+
+.system-prompt-display {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+}
+
+
+/* General Styles for the OpenAI Settings Modal */
+#openai-settings-modal {
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    margin-top: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#openai-settings-modal h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#openai-settings-modal .setting-option {
+    margin-bottom: 15px;
+}
+
+
+
+#openai-settings-modal input[type="text"],
+#openai-settings-modal select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#openai-settings-modal button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#openai-settings-modal button:hover {
+    background-color: #003d82;
+}
+
+#openai-settings-modal .close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+}
+
+#openai-settings-modal .close:hover,
+#openai-settings-modal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+

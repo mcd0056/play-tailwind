@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.10.7
+    command:
+      - "--api.insecure=true"  
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:81"
+    ports:
+      - "81:81"     
+      - "8080:8080" 
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  flask_app:
+    build: ./flask_app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.flask_app.rule=Host(`flask_app.localhost`)"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:1234@db:5432/postgres
+
+  fastapi_app:
+    build: ./services/fastapi
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fastapi.rule=Host(`fastapi.localhost`)"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:1234@db:5432/postgres
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

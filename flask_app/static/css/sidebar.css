@@ -1,0 +1,94 @@
+/* Container for the separate navigation icons */
+.navigation-icons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background-color: #f0f0f0; /* Or any color you want */
+    padding: 10px 0;
+    height: 100vh; /* Full height */
+    width: 50px; /* Adjust width as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional: adds shadow to the icons container */
+    position: fixed; /* Fixed position */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Individual navigation icons */
+.navigation-icon {
+    margin-bottom: 20px; /* Space between icons */
+    cursor: pointer;
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+}
+
+/* Styles for the main sidebar */
+.sidebar {
+    margin-left: 50px; 
+}
+
+/* Styling for the chat header with the back button */
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Add a bottom border to separate from chat area */
+    background-color: #f8f8f8; /* Background color of the header */
+    
+}
+
+#toggle-sidebar {
+    position: absolute;
+    right: 75%; /* Adjust so the button is closer to the sidebar */
+    top: 50%; /* Adjust if necessary to center between sidebar and chat */
+    transform: translateY(-50%) translateX(50%);
+    background: #f0f0f0; /* Adjust color as needed */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* Common styles for both toggle buttons */
+#toggle-sidebar, #toggle-sidebar-expand {
+    background: #f0f0f0; /* Match color as needed */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* Use fixed to position relative to the viewport */
+    top: 50%; /* Center vertically in the viewport */
+    transform: translateY(-50%) translateX(50%); /* Center the button exactly */
+    z-index: 1000; /* Ensure it's above other content */
+    padding: 0; /* Remove padding to ensure icon fits well within the button */
+}
+
+/* Styling for the toggle icons inside the buttons */
+.toggle-icon {
+    width: 20px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure the icon is treated as a block-level element */
+    margin: auto; /* Center the icon horizontally within the button */
+}
+
+/* Hide the collapse button when the sidebar is collapsed */
+.sidebar.collapsed #toggle-sidebar {
+    display: none;
+}
+
+/* Show the expand button only when the sidebar is collapsed */
+.sidebar:not(.collapsed) #toggle-sidebar-expand {
+    display: none;
+}
+
+
+
+
+
+

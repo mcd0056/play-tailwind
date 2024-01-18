@@ -1,0 +1,101 @@
+/* General chat container styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligns items top and bottom */
+    padding: 0;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 25px; /* Give some space around the container */
+    align-items: center;
+}
+
+.chat-screen {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Chat bubble styles */
+.chat-message {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    clear: both;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.bot-message {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 60%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.user-message .message-bubble {
+    background-color: #5e72e4; /* Adjust this color to match your theme */
+}
+
+.bot-message .message-bubble {
+    background-color: #778ca3; /* Adjust this color to match your theme */
+}
+
+/* Adjusted avatar styles for a better fit within the bubbles */
+.avatar {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensure images are not stretched */
+    border: 2px solid #fff; /* White border to distinguish from the chat bubble */
+}
+
+/* Improved input area styles */
+.chat-input-and-upload {
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border: 2px solid #ddd;
+    margin: 0 10px;
+    font-size: 16px; /* Larger font for better readability */
+    outline: none; /* Remove the default focus outline */
+    border-radius: 10px;
+}
+
+
+.chat-interface {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* Adjustments for mobile view */
+@media (max-width: 768px) {
+    .chat-container {
+        margin: 10px; /* Use smaller margins on mobile */
+    }
+    .chat-message .message-bubble {
+        max-width: 85%; /* Allow chat bubbles to take more width on smaller screens */
+    }
+}

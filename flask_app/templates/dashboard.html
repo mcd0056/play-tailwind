@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <link rel="stylesheet" href="/static/css/chatbots.css">
+    <link rel="stylesheet" href="/static/css/training_chatbot.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <link rel="stylesheet" href="/static/css/right_sidebar.css">
+    <link rel="stylesheet" href="/static/css/dalle.css">
+    <link rel="stylesheet" href="/static/css/assistants.css">
+</head>
+<body>
+    
+    <div class="sidebar">
+        <!-- Sidebar icons for Chat, Drawing, Gallery etc. based on the screenshot provided -->
+        <div class="navigation-icons-container">
+            <img src="/static/icons/chat.png" alt="Chat" class="navigation-icon chat-icon">
+            <img src="/static/icons/picture.png" alt="Draw" class="navigation-icon draw-icon">
+            <img src="/static/icons/app-store.png" alt="Gallery" class="navigation-icon gallery-icon">
+            <img src="/static/icons/bucket.png" alt="Bucket" class="navigation-icon bucket-icon">
+            <img src="/static/icons/assistant.png" alt="assistant" class="navigation-icon assistants-icon">
+            <img src="/static/icons/logout.png" alt="logout" class="navigation-icon logout-icon" id="logout-butt">
+        </div>
+        
+        <div class="profile-section">
+            <!-- Toggle Button -->
+            <button id="toggle-sidebar" onclick="toggleSidebar()">
+                <img src="/static/icons/arrow.png" alt="Toggle Sidebar" class="toggle-icon">
+            </button>
+            <img src="/static/icons/buyer-persona.png" alt="Profile Picture" class="profile-picture" onclick="redirectToProfile()">
+            <div class="profile-name" id="user-name">Your Name</div>
+            
+        </div>
+
+        <script>
+            function redirectToProfile() {
+                window.location.href = '/profile';
+            }
+        
+
+        </script>
+
+        <button id="new-chat" onclick="startNewChat()">New Chat</button>
+        
+        <div class="saved-conversations" id="saved-conversations">
+            <!-- This section will be dynamically populated -->
+        </div>
+           
+            
+        </div>
+    
+
+    <!-- Separate Toggle Button outside of sidebar for expanding -->
+    <button id="toggle-sidebar-expand" onclick="toggleSidebar()" class="toggle-button expand-button" style="display: none;">
+        <img src="/static/icons/arrow-expand.png" alt="Expand Sidebar" class="toggle-icon">
+    </button>
+    
+    <div class="chat-container" id="main-chat-container">   
+        <h1 class="heading-center">Builder 'a' Bot</h1>
+        <div class="chatbot-selection-container">
+            <div class="chatbot-label">
+                <label for="chatbot-select">Choose a Chatbot:</label>
+            </div>
+            <div class="chatbot-dropdown">
+                <select id="chatbot-select">
+                    <option value="chatbot-1">Web Search</option>
+                    <option value="chatbot-2">ChatGPT 3.5 Turbo</option>
+                    <option value="chatbot-vision">chatgpt-vision</option>
+                    <option value="chatbot-4">ChatGPT 4</option>
+
+                    <option value="chatbot-6">gpt-3.5-turbo-1106</option>
+                    <option value="chatbot-7">gpt-3.5-turbo-16k</option>
+                </select>
+            </div>
+        
+            <div class="chatbot-persona">
+                <button class="icon-button">
+                    <img src="/static/icons/buyer-persona.png" alt="Persona">
+                </button>
+                <div>
+                    <button id="settings-butt" class="icon-button">
+                        <img src="/static/icons/settings.png" alt="Settings" class="settings-icon">
+                    </button>
+                    </div>
+            </div>
+        </div>
+
+        
+
+        <div class="chat-interface">
+            <div class="chat-screen" id="chat-screen">
+                <!-- Dynamic chat messages will appear here -->
+                
+                <div id="image-preview-container"></div>
+            </div>
+    
+            <div class="prompt-and-persona-container">
+                <div class="dropdown-container">
+                    <div class="system-prompt-selection">
+                        <label for="system-prompt-select">System Prompt:</label>
+                        <select id="system-prompt-select">
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+    
+            <div class="chat-input-and-upload">
+                <label class="icon-button file-upload-button">
+                    <img src="/static/icons/upload.png" alt="Upload">
+                    <input type="file" style="display: none;">
+                </label>
+                <textarea id="chat-input" class="chat-input" placeholder="Type your message..."></textarea>
+                
+                <button id="send-button" class="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    
+        <!-- Right Sidebar -->
+    <div id="right-sidebar" class="right-sidebar">
+        <span class="close">&times;</span>
+        <!-- Header of the sidebar -->
+        <div class="sidebar-header">
+            <h2>GPT Store</h2>
+            <div class="search-container">
+                <input type="text" placeholder="Search GPT names, descriptions" aria-label="Search">
+                <button type="button" aria-label="Search" id="search-button">
+                    <img src="/static/icons/search.png" alt="Search">
+                </button>
+            </div>
+        </div>
+
+        <!-- Categories or filter tags -->
+        <div class="sidebar-categories">
+            <button class="category">All</button>
+            <button class="category">Text</button>
+            <button class="category">Images</button>
+            <!-- Add more categories as needed -->
+        </div>
+
+        <!-- Items Grid -->
+        <div class="items-grid">
+            <!-- Single Item -->
+            <div class="item">
+                <img src="/static/icons/item-icon.png" alt="GPT-4-All">
+                <div class="item-info">
+                    <h3>GPT-4-All</h3>
+                    <p>描述信息 ...</p>
+                    <span class="item-price">¥3199</span>
+                </div>
+            </div>
+            <!-- Repeat for other items -->
+        </div>
+    </div>
+
+    <div id="assistants-container" class="assistants-container" style="display: none;">
+        <h1 class="assistants-heading">Your GPT Assistants</h1>
+        <div class="assistants-grid">
+            <!-- Example of an assistant -->
+            <div class="assistant-item">
+                <div class="assistant-info">
+                    <h2 class="assistant-name">Assistant Name</h2>
+                    <p class="assistant-model">Model of assistant.</p>
+                </div>
+                <button class="use-assistant-btn">Use</button>
+            </div>
+            <!-- Repeat for other assistants -->
+        </div>
+    </div>
+
+    <!-- New Chat Section for Assistants -->
+<div id="assistant-chat-container" class="assistant-chat-container" style="display: none;">
+    <h1 class="heading-center">Assistant Chat</h1>
+    
+    <div class="chat-interface">
+        <div class="chat-screen" id="assistant-chat-screen">
+            <!-- Dynamic chat messages for the assistant will appear here -->
+        </div>
+
+        <div class="chat-input-and-upload">
+            
+            <textarea id="assistant-chat-input" class="chat-input" placeholder="Type your message..."></textarea>
+            
+            <button id="assistant-send-button" class="send-button">Send</button>
+        </div>
+    </div>
+</div>
+ 
+
+<!-- Modal -->
+<div id="persona-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="persona-modal-close" onclick="closePersonaModal()">&times;</span>
+        <h2>Train Your Chatbot</h2>
+        
+        <!-- Form for chatbot training -->
+        <form id="train-chatbot-form">
+            <div class="form-group">
+                <label for="chatbot-name">Chatbot Name:</label>
+                <input type="text" id="chatbot-name" name="assistant_name" required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="chatbot-instructions">Instructions/Prompts:</label>
+                <textarea id="chatbot-instructions" name="instructions" rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Tools:</label>
+                <div>
+                    <input type="checkbox" id="code-interpreter" name="tools_list" value="code_interpreter">
+                    <label for="code-interpreter">Code Interpreter</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="retrieval" name="tools_list" value="retrieval">
+                    <label for="retrieval">Retrieval</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="get-stock-price" name="tools_list" value="get_stock_price">
+                    <label for="get-stock-price">Stock Price</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="get-crypto-price" name="tools_list" value="get_crypto_price">
+                    <label for="get-crypto-price">Crypto Price</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="training-files">Training Files:</label>
+                <input type="file" id="training-files" name="files" multiple accept=".txt,.json">
+                <div id="file-list"></div>
+            </div>
+
+            <button type="submit">Train Chatbot</button>
+        </form>
+    </div>
+</div>
+
+<div id="draw-container" class="draw-container" style="display: none;">
+    <div class="dalle-interface">
+        <h1 class="dalle-heading">Generate Image With Dalle 3</h1>
+        <div class="dalle-output-container">
+            <h2>Generated Image:</h2>
+            <div id="dalle-output" class="dalle-output">
+                <!-- Generated images will appear here -->
+            </div>
+            
+            
+        </div>
+        
+        <div class="dalle-input-container">
+            <!-- Dropdown for suggestions -->
+        
+            <textarea id="dalle-prompt" placeholder="Describe the image you want to generate..."></textarea>
+            <div class="control-panel">
+                <select id="image-style">
+                    <option value="realistic">Realistic</option>
+                    <option value="abstract">Abstract</option>
+                    <option value="cartoon">Cartoon</option>
+                    <!-- Add more styles as needed -->
+                </select>
+                <button id="generate-image" onclick="generateImage()">Generate Image</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- New Saved Images Section -->
+<div id="saved-images-container" class="saved-images-container" style="display: none;">
+    <h1 class="saved-images-heading">Saved Images</h1>
+    <div class="image-grid">
+    </div>
+</div>
+</div>
+
+
+<div id="openai-settings-modal" class="modal settings-modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeSettingsModal()">&times;</span>
+        <h2>Chatbot Settings</h2>
+        
+        <!-- Content for settings -->
+        <div class="settings-content">
+            <!-- OpenAI API Key -->
+            <div class="setting-option">
+                <label for="api-key">OpenAI API Key:</label>
+                <input type="text" id="api-key" name="api-key" placeholder="Enter your API key here">
+                <button type="button" onclick="saveApiKey()">Update API Key</button>
+            </div>
+
+               <!-- New Sliders for Chatbot Settings -->
+               <div class="setting-option">
+                <label for="max-tokens">Max Tokens:</label>
+                <input type="range" id="max-tokens" name="max-tokens" min="1" max="3000" value="300">
+                <span id="max-tokens-value">300</span>
+            </div>
+            <div class="setting-option">
+                <label for="presence-penalty">Presence Penalty:</label>
+                <input type="range" id="presence-penalty" name="presence-penalty" min="-2" max="2" step="0.1" value="0">
+                <span id="presence-penalty-value">0</span>
+            </div>
+            <div class="setting-option">
+                <label for="temperature">Temperature:</label>
+                <input type="range" id="temperature" name="temperature" min="0" max="2" step="0.1" value="1">
+                <span id="temperature-value">1</span>
+            </div>
+            <div class="setting-option">
+                <label for="top-p">Top P:</label>
+                <input type="range" id="top-p" name="top-p" min="0" max="1" step="0.1" value="1">
+                <span id="top-p-value">1</span>
+            </div>
+            <!-- Add more chatbot settings options here -->
+        </div>
+
+        <button type="button" onclick="saveSettings()">Save Changes</button>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function() {
+    fetch('/get-gpt-store-data')
+        .then(response => response.json())
+        .then(data => {
+            const itemsGrid = document.querySelector('.items-grid');
+            itemsGrid.innerHTML = ''; // Clear existing items
+
+            data.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'item';
+                itemElement.innerHTML = `
+                    <img src="${item.image_url}" alt="${item.name}">  // Use the image_url for the image source
+                    <div class="item-info">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <button onclick="window.location.href='${item.link_to_gpt}'">Visit</button>
+                    </div>
+                `;
+                itemsGrid.appendChild(itemElement);
+            });
+        })
+        .catch(error => console.error('Error fetching GPT store data:', error));
+};
+
+document.getElementById('max-tokens').oninput = function() {
+    document.getElementById('max-tokens-value').textContent = this.value;
+}
+
+document.getElementById('presence-penalty').oninput = function() {
+    document.getElementById('presence-penalty-value').textContent = this.value;
+}
+
+document.getElementById('temperature').oninput = function() {
+    document.getElementById('temperature-value').textContent = this.value;
+}
+
+document.getElementById('top-p').oninput = function() {
+    document.getElementById('top-p-value').textContent = this.value;
+}
+
+    </script>
+
+    <!-- Scripts at the end of the body -->
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/streaming-messages.js"></script>
+    <script src="/static/js/chatbots.js"></script>
+    <script src="/static/js/train_chatbot.js"></script>
+    <script src="/static/js/right_sidebar.js"></script>
+    <script src="/static/js/nav.js"></script>
+    
+</body>
+</html>

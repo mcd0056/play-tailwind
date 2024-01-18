@@ -1,28 +1,34 @@
-# Play - Free Tailwind CSS Template for Startup, Apps and SaaS
+Execute python file inside docker 
 
-Play is an open-source and free Tailwind CSS template co-created by TailGrids and UIdeck. This template specially crafted for SaaS, startup, business and software website.
-Play crafted in a way that you can use with almost all sort of web project. This is Tailwind CSS template built using [TailGrids](https://tailgrids.com/) components.
+docker exec -it play-tailwind-flask_app-1 python start_db.py
 
-### This template crafted using 🥞 [TailGrids](https://tailgrids.com/) UI components
+List All Databases:
+\l
 
-### [🚀 View Demo](https://play-tailwind.tailgrids.com/)
+Connect to a Specific Database:
+\c <database_name>
 
-### [⬇️ Download Now](https://links.tailgrids.com/play-download)
+List All Tables in the Current Database:
+\dt
 
-[![play-tailwind](https://cdn.tailgrids.com/play-tailwind.jpg)](https://play-tailwind.tailgrids.com/)
+Describe a Table (to see the structure of the table):
+\d <table_name>
 
-## 📃 License
+List All Users/Roles:
+\du
 
-Play is an open-source template, you can use it with your personal or commercial projects without any attribution or backlink.
 
-## 💙 Support
+Run a Query (example: select everything from a table):
 
-You can always support this project by [Starring🌟 This Repository](https://github.com/tailgrids/play-tailwind)
-and sharing with friends. Also open an issue if you find bug or feel free to contribute by pull requests after fixing any issue or adding more values.
 
-### Update Logs: 2.0 - Nov 2023
-- Design refresh
-- New marketing section
-- Dark mode support
-- Code and performance optimization
-- Updated dependencies
+SELECT * FROM <table_name>;
+Exit psql:
+
+
+\q
+
+
+docker exec -it play-tailwind-db-1 psql -U postgres postgres
+
+http://flask_app.localhost:81
+http://fastapi.localhost:81

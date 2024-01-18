@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+gunicorn
+psycopg2
+psycopg2-binary
+Flask-Cors
+openai
+Werkzeug
+packaging
+uvicorn

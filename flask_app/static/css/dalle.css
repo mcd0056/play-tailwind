@@ -1,0 +1,165 @@
+.draw-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.dalle-interface {
+    max-width: 1000px;
+    width: 95%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dalle-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+
+.dalle-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#dalle-prompt {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#image-style {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#generate-image {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#generate-image:hover {
+    background-color: #0056b3;
+}
+
+.dalle-output-container {
+    width: 100%;
+}
+
+.dalle-output {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.generated-image {
+    max-width: 60%; 
+    height: auto; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    border-radius: 5px; 
+}
+
+.saved-images-container {
+    padding: 20px;
+    text-align: center;
+    display: block; /* Ensure it's not set to none */
+    align-items: center;
+}
+
+.image-grid {
+    display: flex; /* Use flex display for direct children */
+    flex-wrap: wrap; /* Wrap items to next line if no space */
+    justify-content: flex-start; /* Align items to the start */
+    gap: 20px; /* Space between items */
+    width: 100%; /* Full width */
+    padding: 0;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add space below each container for the footer */
+}
+
+.image-container img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container:hover img {
+    transform: scale(1.05); /* Optional: Slight zoom on hover */
+}
+
+.image-action-icon img {
+    width: 20px;
+    height: auto;
+    margin: 10px;
+}
+
+.image-action-icon {
+    width: 30px; /* Width of the icon container */
+    height: 30px; /* Height of the icon container */
+    border-radius: 50%; /* Make the icon container circular */
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: center;
+    cursor: pointer;
+    border: none; /* Remove the border from the button */
+    padding: 0; /* Remove padding inside the button to fit the icon */
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dalle-interface {
+        padding: 10px;
+    }
+
+    .control-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #image-style, #generate-image {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,66 @@
+/* chatbots.css */
+
+/* Styling for the chatbot information section */
+.chatbot-info {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+/* Style for chatbot photo */
+.chatbot-photo {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Style for chatbot title */
+.chatbot-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Style for chatbot description */
+.chatbot-info p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+
+/* New style for the welcome message frame */
+.welcome-message-frame {
+    border-bottom: 1px solid #eee; /* Add bottom border */
+    padding: 5px 5px; /* Add some padding */
+    margin: 5px 0; /* Add some margin to separate from other elements */
+    text-align: center; /* Center the text */
+    display: block; /* Use block to take the full width */
+}
+
+/* Ensuring chatbot selection dropdown is styled consistently */
+.chatbot-dropdown select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Hover effect for chatbot selection dropdown */
+.chatbot-dropdown select:hover {
+    border-color: #bbb;
+}
+
+/* Responsive adjustments for chatbot info section */
+@media (max-width: 768px) {
+    .chatbot-photo {
+        max-width: 80px;
+    }
+
+    .chatbot-info h2 {
+        font-size: 1.3em;
+    }
+
+    .chatbot-info p {
+        font-size: 0.9em;
+    }
+}
