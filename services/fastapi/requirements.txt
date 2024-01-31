@@ -1,7 +1,9 @@
 fastapi
 uvicorn
-databases
-asyncpg
-sqlalchemy
-psycopg2
+langchain
+langchain-community
+langchain-core
+langdetect
+langsmith
+openai
 

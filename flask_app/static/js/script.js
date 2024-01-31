@@ -707,10 +707,6 @@ function closeSettingsModal() {
     document.getElementById('')
 }
 
-function saveSettings() {
-    // Add logic to save other settings here
-    closeSettingsModal();
-}
 
 document.getElementById('settings-butt').addEventListener('click', openSettingsModal);
 

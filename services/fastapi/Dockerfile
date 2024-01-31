@@ -4,8 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-# Install dependencies required for psycopg2 binary
-RUN apt-get update && apt-get install -y libpq-dev gcc
 
 RUN pip install --no-cache-dir -r requirements.txt
 

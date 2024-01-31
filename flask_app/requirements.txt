@@ -8,3 +8,5 @@ openai
 Werkzeug
 packaging
 uvicorn
+requests
+duckduckgo-search

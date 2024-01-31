@@ -1,6 +1,5 @@
 .assistants-container {
     display: flex; /* Changed to flex to manage child width distribution */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
@@ -13,7 +12,7 @@
     width: 100%; /* Full width to ensure it does not interfere with flex items */
     text-align: center;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .assistants-grid {
@@ -45,7 +44,7 @@
 }
 
 .assistant-name {
-    font-size: 1.2em;
+    font-size: 1.0em;
     color: #333;
     margin-bottom: 5px;
 }
@@ -76,7 +75,6 @@
 
 /* Assistant Chat Container Styles */
 .assistant-chat-container {
-    background-color: #fff; /* Consistent with main app */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 20px;
@@ -84,13 +82,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    
 }
 
 .assistant-chat-container .heading-center {
     text-align: center;
     color: #333;
-    margin-bottom: 20px;
     font-family: Arial, sans-serif;
 }
 
@@ -148,18 +144,16 @@
     padding: 20px;
     background-color: #f3f4f6; /* light grey background */
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   
   .assistant-details img.assistant-image {
-    width: 100px; /* or any size you prefer */
+    width: 50px; /* or any size you prefer */
     height: auto;
-    border-radius: 50%; /* circular image */
-    margin-bottom: 10px;
   }
   
   .assistant-details h2 {
-    font-size: 1.5em;
+    font-size: 1.0em;
     color: #333; /* dark grey color for text */
     margin-bottom: 5px;
   }
@@ -167,12 +161,12 @@
   .assistant-details p {
     font-size: 1em;
     color: #666; /* lighter text color */
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .welcome-message {
-    font-size: 1.2em;
+    font-size: 1.0em;
     text-align: center;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }

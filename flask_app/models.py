@@ -11,7 +11,7 @@ class User(db.Model):
     password = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     conversations = db.relationship('ChatConversation', backref='user', lazy=True)
-    openai_api_key = db.Column(db.String(200), nullable=True)  # Field for OpenAI API key
+    openai_api_key = db.Column(db.String(200), nullable=True) 
 
 # Define the ChatConversation model
 class ChatConversation(db.Model):

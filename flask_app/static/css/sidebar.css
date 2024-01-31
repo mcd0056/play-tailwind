@@ -23,10 +23,6 @@
     height: 30px; /* Adjust the height as needed */
 }
 
-/* Styles for the main sidebar */
-.sidebar {
-    margin-left: 50px; 
-}
 
 /* Styling for the chat header with the back button */
 .chat-header {
@@ -36,7 +32,6 @@
     padding: 10px;
     border-bottom: 1px solid #ccc; /* Add a bottom border to separate from chat area */
     background-color: #f8f8f8; /* Background color of the header */
-    
 }
 
 #toggle-sidebar {

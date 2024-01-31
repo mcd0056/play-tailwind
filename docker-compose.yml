@@ -16,6 +16,7 @@ services:
 
   flask_app:
     build: ./flask_app
+    command: gunicorn app:app --bind 0.0.0.0:5000 --workers 4
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.flask_app.rule=Host(`flask_app.localhost`)"
@@ -33,9 +34,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    environment:
-      - DATABASE_URL=postgres://postgres:1234@db:5432/postgres
-
+    
   db:
     image: postgres
     environment:

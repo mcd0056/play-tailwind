@@ -1,3 +1,13 @@
+/* Improved Color Scheme */
+:root {
+    --primary-color: #0056b3; /* Primary color for buttons and highlights */
+    --secondary-color: #f0f0f0; /* Secondary color for backgrounds */
+    --text-color: #333; /* Default text color */
+    --link-color: #007bff; /* Color for links and hover states */
+    --border-color: #ddd; /* Border color for elements */
+    --hover-color: #003d82; /* Hover state color for interactive elements */
+}
+
 /* For WebKit browsers like Chrome, Safari */
 ::-webkit-scrollbar {
     width: 10px;
@@ -27,34 +37,34 @@
 body {
     display: flex;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Open Sans', sans-serif; /* Modern, clean font */
+    background-color: var(--secondary-color);
 }
 
+/* Improved Sidebar */
 .sidebar {
     flex: 0 0 250px;
-    background-color: #e6e6e6; /* Slightly different background */
+    background-color: #e6e6e6;
     padding: 20px;
-    overflow-y: auto; /* Allow scrolling for long lists */
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-    transition: flex-basis 0.5s; /* Add shadow for depth */
-    justify-content: space-between;
-    flex-direction: column;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: flex-basis 0.5s, box-shadow 0.3s;
+    margin-left: 50px;
 }
 
 /* CSS for the sidebar when it is collapsed */
 .sidebar.collapsed {
-    flex: 0 0 0px; /* Collapse the sidebar */
+    flex: 0 0 0px;
     padding: 20px 0px;
 }
 
-
+/* Chat Container */
 .chat-container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: #fff; /* Main area background */
+    background-color: #fff;
 }
 
 .chat-screen {
@@ -63,6 +73,11 @@ body {
     padding: 20px;
     overflow-y: auto;
     background-color: #fff;
+}
+
+/* Interactive Elements Enhancements */
+button, .dropdown, .conversation-item {
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 
@@ -117,6 +132,16 @@ body {
     border-radius: 50%;
     background-color: #ccc; /* Placeholder color */
     margin-right: 10px;
+    background-image: url('path/to/your/image.jpg'); /* Replace with actual image path */
+    background-size: cover;
+}
+
+
+
+/* Modern UI Elements */
+.conversation-item, .chat-screen, .image-frame {
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .profile-name {
@@ -150,11 +175,13 @@ body {
 /* Multiline chat input */
 .chat-input {
     flex-grow: 1;
-    min-height: 20px; /* Adjust as needed for a taller input */
-    padding: 10px;
+    min-height: 10px; /* Adjust as needed for a taller input */
     margin-right: 10px;
     border: 1px solid #ddd;
-    
+    border-radius: 5px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    font-size: 1em;
 }
 
 /* Icon buttons */
@@ -178,7 +205,7 @@ body {
 
 .file-upload-button {
     order: -1; /* Moves the upload button to the left */
-    margin-right: auto; /* Pushes everything else to the right */
+    margin-right: 20px;
 }
 
 .chatbot-selection-container {
@@ -293,6 +320,10 @@ body {
     overflow: hidden; /* Prevent text from overflowing */
     text-overflow: ellipsis; /* Add ellipsis to text that can't fit in the dropdown */
     white-space: nowrap; /* Keep the dropdown text on one line */
+    border-radius: 5px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    font-size: 1em;
 }
 
 .system-prompt-selection select:focus {
@@ -310,20 +341,18 @@ body {
     justify-content: flex-end;
 }
 
-
 /* Updated container style for modern look and alignment */
 .prompt-and-persona-container {
     display: flex;
     justify-content: center; /* Center align the container */
     padding: 15px;
-    border: 1px solid #ddd; /* Use a softer border color */
     border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+    background-color: #ffffff; 
 }
 
-button:hover {
-    background-color: #007bff;
+button:hover, .dropdown:hover, .conversation-item:hover {
+    background-color: var(--hover-color);
+    color: #fff;
 }
 
 .send-button:hover {
@@ -341,9 +370,6 @@ button:hover {
 }
 
 
-
-
-
 /* Adjusting icon size within icon buttons */
 .icon-button img {
     width: 20px; /* Set a fixed width for icons */
@@ -359,7 +385,7 @@ button:hover {
 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax values as needed */
-    gap: 10px; /* Spacing between images */
+    gap: 20px; /* Spacing between images */
     padding: 10px;
 }
 
@@ -368,6 +394,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding: 10px;
 }
 
 .image-container img {
@@ -380,7 +407,6 @@ button:hover {
     padding: 10px;
     margin: 10px 0;
     background-color: #e6e6e6;
-    border-radius: 5px;
 }
 
 
@@ -463,6 +489,8 @@ button:hover {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
 
 
 
